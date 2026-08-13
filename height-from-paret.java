@@ -17,10 +17,15 @@ public class Main{
 
       int root = -1;
       for(int i=0; i<arr.length; i++){
+        if(arr[i] == -1) {
+          root = i;
+          continue;
+        }
+        
         adj.get(arr[i]).add(i);
-        if(arr[i] == -1) root = i;
+        
       }
-      Queue<Integer> q = new ArrayList<>();
+      Queue<Integer> q = new LinkedList<>();
       int height =0;
       q.offer(root);
       while(!q.isEmpty()){
@@ -31,8 +36,8 @@ public class Main{
             for(int neigh : adj.get(node)) q.offer(neigh);
         }
       }
-
-      return height;
+      System.out.println(height);
+      return;
       
   }
 }
